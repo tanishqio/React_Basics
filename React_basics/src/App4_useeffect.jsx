@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 function App4() {
     const [count, setcount] = useState(0);
+    const [count2, setcount2] = useState(0);
+
     function inccnount() {
         console.log("inc count called" + count);
         setcount(count + 1);
@@ -37,12 +39,24 @@ function App4() {
         console.log("above set interval")
         setInterval(incount2, 1000)
     }, [])
+
+ function incount3(){
+    console.log(count2);
+    setcount(count2+1);
+  }
+        useEffect(function () {
+        console.log("above set interval")
+        setInterval(incount3, 1000)
+    }, [count2])
     // if we dont wrap it in useeffect it would run multiple clokcs exponentially
     // which would effect the code heavily
 
     // so useeffect make sures it only runs one time mounts
     return (
-        <div>the value of count is {count}</div>
+        <div>
+            {/* the value of count is {count} */}
+        <br />
+        the value of count2 is {count2}</div>
         
 
     )
