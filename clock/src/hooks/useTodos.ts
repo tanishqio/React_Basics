@@ -32,6 +32,6 @@ export function useTodos() {
         }
     }, [])
 
-    return todos;
+    return {todos,settodo};
 
 }

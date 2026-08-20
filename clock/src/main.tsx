@@ -4,9 +4,10 @@ import './index.css'
 import App from './App.tsx'
 import { App2 } from './topbutton.tsx'
 import { Todos } from './todo.tsx'
+import{ Todo2 }  from "./todo2.tsx"
 
 createRoot(document.getElementById('root')!).render(
   
-    <Todos />
+    <Todo2 />
   
 )
