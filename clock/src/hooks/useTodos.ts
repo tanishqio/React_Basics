@@ -7,7 +7,31 @@
 // we cannot define a random function which 
 // consist of hooks until it is a compponent
 // but normal funcion cant have hooks
-export function useTodos(){
-    
+
+// all the complicated logic ins now moved into this function
+import { useEffect, useState } from "react";
+import axios from "axios";
+export function useTodos() {
+    const [todos, settodo] = useState([]);
+    useEffect(() => {
+        axios.get("https://jsonplaceholder.typicode.com/todos")
+            .then(response => {
+                settodo(response.data);
+                console.log(response);
+            })
+
+        let interval = setInterval(() => {
+            axios.get("https://jsonplaceholder.typicode.com/todos")
+            .then(response => {
+                settodo(response.data)
+            })
+        }, 10 * 1000)
+
+        return () => {
+            clearInterval(interval);
+        }
+    }, [])
+
+    return todos;
 
 }
